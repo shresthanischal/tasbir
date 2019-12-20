@@ -1,0 +1,17 @@
+{% extends 'photo_app\base.html' %}
+
+{% block title %}
+    Welcome to Tasbir
+{% endblock %}
+
+{% block main_content %}
+    This is the index page of Tasbir.
+    
+    The posts are: <br>
+
+    {% for post in posts %}
+        Created on : {{post.created}} <br>
+        Uploaded by : {{post.uploaded_by.display_name}} <br>
+        <img  style= "width : 500px; height: 200px;"src= '{{post.photo.url}}'
+    {% endfor %}
+{% endblock %}

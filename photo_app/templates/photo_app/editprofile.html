@@ -1,0 +1,59 @@
+{% extends 'photo_app/base.html' %}
+
+{% load static %}
+
+{% block main_content %}
+        <main class="edit-profile">
+            <section class="profile-form">
+                <header class="profile-form__header">
+                    <div class="profile-form__avatar-container">
+                        <img 
+                            src="{% static 'images/avatar.jpg' %}"
+                            class="profile-form__avatar"
+                        />
+                    </div>
+                    <h4 class="profile-form__title">{{user.username}}</h4>
+                </header>
+                <form method="POST" action="#" class="edit-profile__form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="edit-profile__form-row">
+                        <label for="name" class="edit-profile__label">Name
+                        </label>
+                        {{ form.display_name }}
+                    </div>
+                    <div class="edit-profile__form-row">
+                        <label for="username" class="edit-profile__label">
+                            Username
+                        </label>
+                        {{ form.username }}
+                    </div>
+                    <div class="edit-profile__form-row">
+                        <label for="bio" class="edit-profile__label">
+                            Bio
+                        </label>
+                        {{ form.bio }}
+                    </div>
+                    <div class="edit-profile__form-row">
+                        <label for="email" class="edit-profile__label">
+                            Email
+                        </label>
+                        {{ form.email }}
+                    </div>
+                    <div class="edit-profile__form-row">
+                        <label for="profile-pic" class="edit-profile__label">
+                            Profile picture
+                        </label>
+                        {{ form.profile_pic }}
+                    </div>
+                    <div class="edit-profile__form-row">
+                        <label>
+                        {{form.errors}}
+                    </div>
+                    <div class="edit-profile__form-row">
+                        <label class="edit-profile__label"></label>
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </section>
+        </main>
+{% endblock %}

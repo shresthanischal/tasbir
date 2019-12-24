@@ -17,6 +17,15 @@
                         <span class="photo__username">{{post.uploaded_by.username}}</span>
                         <span class="photo__location">{{post.location}}</span>
                     </div>
+                    <div class="photo__header-column">
+                        {% if post.uploaded_by.id == request.session.user_id %}
+                            <form action="{% url 'deletephoto' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="postid" value="{{post.id}}">
+                                <input type="submit" value="Delete" style="margin-left: 100px;">
+                            </form>   
+                        {% endif %}
+                    </div>
                 </header>
                 <div class="photo__file-container">
                     <img

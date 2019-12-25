@@ -46,11 +46,18 @@
                     <span class="photo__likes">{{post.liked_by.all|length}} like{{post.liked_by.all|pluralize:'s'}}</span>
                     {% endif %}
                     <ul class="photo__comments">
-                        {% for comment in post.comments.all %}
+                        {% for comment in post.comments.all|slice:":5" %}
                             <li class="photo__comment">
                                 <span class="photo__comment-author">{{comment.commented_by.username}}</span>{{comment.text}}
                             </li>
                         {% endfor %}
+                        {% if post.comments.all|length >5 %}
+                            <a>
+                                <li class="photo_comment">
+                                    View More
+                                </li>
+                            </a>
+                        {% endif %}
                     </ul>
                     <span class="photo__time-ago">{{post.created}}</span>
                     <div class="photo__add-comment-container">

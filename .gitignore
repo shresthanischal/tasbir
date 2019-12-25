@@ -3,6 +3,7 @@
 # Edit at https://www.gitignore.io/?templates=django
 
 migrations/
+staticfiles/
 
 ### Django ###
 *.log
